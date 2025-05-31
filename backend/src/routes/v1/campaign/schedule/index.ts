@@ -6,7 +6,6 @@ export const scheduleRouter = Router();
 
 scheduleRouter.post("/", async (req, res) => {
   const payload = req.body;
-
   const { success, data } = scheduleCampaignSchema.safeParse(payload);
 
   if (!success) {
@@ -24,15 +23,10 @@ scheduleRouter.post("/", async (req, res) => {
     const endDateObj = new Date(endDate!);
     const currentDateObj = new Date();
 
-    if (
-      startDateObj.getSeconds() > endDateObj.getSeconds() ||
-      startDateObj.getSeconds() < currentDateObj.getSeconds()
-    ) {
-      res
-        .json({
-          message: "Cannot schedule campaign in the past",
-        })
-        .status(402);
+    if (startDateObj.getTime() < currentDateObj.getTime()) {
+      res.status(402).json({
+        message: "Cannot schedule campaign in the past",
+      });
 
       return;
     }
@@ -40,10 +34,12 @@ scheduleRouter.post("/", async (req, res) => {
     const udatedCampaign = await db.campaign.update({
       where: { id: campaignId },
       data: {
-        startDate,
-        endDate,
+        startDate: startDateObj.toISOString(),
+        endDate: endDateObj.toISOString(),
+        status: "SCHEDULED",
       },
     });
+
     res.json({
       message: "Campaign scheduled successfully",
       campaignId: udatedCampaign.id,
@@ -56,6 +52,5 @@ scheduleRouter.post("/", async (req, res) => {
     res.status(500).json({
       message: "Internal server error",
     });
-    return;
   }
 });

@@ -11,7 +11,7 @@ export const createCampaignSchema = z.object({
 });
 
 export const scheduleCampaignSchema = z.object({
-  campaignId: z.string().uuid("Invalid campaign ID"),
+  campaignId: z.string(),
   startDate: z.string().datetime({ offset: true }),
   endDate: z.string().datetime({ offset: true }),
 });

@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CreateForm } from "./components/create";
+import { ScheduleForm } from "./components/schedule";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="w-screen flex justify-center">
+      <Tabs defaultValue="account" orientation="vertical">
+        <TabsList className="h-10 mt-2 space-x-10">
+          <TabsTrigger value="create" className="cursor-pointer">
+            Create Campaign
+          </TabsTrigger>
+          <TabsTrigger value="schedule" className="cursor-pointer">
+            Schedule Campaign
+          </TabsTrigger>
+          <TabsTrigger value="dashboard" className="cursor-pointer">
+            Dashboard
+          </TabsTrigger>
+          <TabsTrigger value="summary" className="cursor-pointer">
+            Summary
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="create">
+          <CreateForm />
+        </TabsContent>
+        <TabsContent value="schedule">
+          <ScheduleForm />
+        </TabsContent>
+      </Tabs>
+    </div>
+  );
 }
 
-export default App
+export default App;
