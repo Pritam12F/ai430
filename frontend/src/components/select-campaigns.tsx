@@ -6,7 +6,7 @@ import {
   SelectValue,
 } from "./ui/select";
 
-export const SelectWrapper = ({
+export const SelectCampaignsWrapper = ({
   campaigns,
   setSelectedId,
 }: {

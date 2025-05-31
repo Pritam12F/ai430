@@ -1,6 +1,6 @@
 import { useCampaigns } from "@/hooks/use-campaign";
 import React from "react";
-import { DataTable } from "./data-table";
+import { DataTable } from "../ui/data-table";
 import { columns } from "./columns";
 import { useRearrangeCampaign } from "@/hooks/use-rearrange-campaign";
 

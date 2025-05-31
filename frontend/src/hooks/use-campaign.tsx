@@ -12,7 +12,8 @@ export const useCampaigns = () => {
         `${import.meta.env.VITE_BACKEND_URL}/v1/campaign/summary/all`
       );
 
-      const campaigns = res.data;
+      const campaigns = res.data.campaigns;
+
       const scheduledCampaigns = campaigns.filter(
         (campaign: any) => campaign.status === "SCHEDULED"
       );

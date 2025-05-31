@@ -1,5 +1,5 @@
 import { useCampaigns } from "@/hooks/use-campaign";
-import { SelectWrapper } from "./select";
+import { SelectCampaignsWrapper } from "./select-campaigns";
 import { useState } from "react";
 import { DatePicker } from "./date-picker";
 import { Button } from "./ui/button";
@@ -60,7 +60,7 @@ export const ScheduleForm = () => {
       </h1>
       <div className="mt-20">
         <div className="ml-6.5">
-          <SelectWrapper
+          <SelectCampaignsWrapper
             campaigns={unscheduled}
             setSelectedId={setSelectedId}
           />

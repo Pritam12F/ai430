@@ -38,7 +38,7 @@ fetchRouter.get("/all", async (req, res) => {
         emails: true,
       },
     });
-    res.status(200).json(campaigns);
+    res.status(200).json({ campaigns });
   } catch (error) {
     console.error("Error fetching all campaigns:", error);
     res.status(500).json({ error: "Internal server error" });

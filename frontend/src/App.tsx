@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CreateForm } from "./components/create";
 import { ScheduleForm } from "./components/schedule";
 import Summary from "./components/summary/summary";
+import { Dashboard } from "./components/dashboard/dashboard";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
         </TabsContent>
         <TabsContent value="summary">
           <Summary />
+        </TabsContent>
+        <TabsContent value="dashboard">
+          <Dashboard />
         </TabsContent>
       </Tabs>
     </div>
