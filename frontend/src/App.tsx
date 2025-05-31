@@ -8,9 +8,13 @@ import { Dashboard } from "./components/dashboard/dashboard";
 function App() {
   return (
     <div className="w-screen flex justify-center">
-      <Tabs defaultValue="account" orientation="vertical">
+      <Tabs defaultValue="create" orientation="vertical">
         <TabsList className="h-10 mt-2 space-x-10">
-          <TabsTrigger value="create" className="cursor-pointer">
+          <TabsTrigger
+            value="create"
+            className="cursor-pointer"
+            defaultChecked={true}
+          >
             Create Campaign
           </TabsTrigger>
           <TabsTrigger value="schedule" className="cursor-pointer">
