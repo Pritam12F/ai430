@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 
 export const useCampaigns = () => {
   const [scheduled, setScheduled] = useState([]);
-  const [unsheduled, setUnscheduled] = useState([]);
+  const [unscheduled, setUnscheduled] = useState([]);
   const [completed, setCompleted] = useState([]);
 
   const fetch = useCallback(async () => {
@@ -36,5 +36,5 @@ export const useCampaigns = () => {
     fetch();
   }, []);
 
-  return { scheduled, unsheduled, completed };
+  return { scheduled, unscheduled, completed };
 };

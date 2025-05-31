@@ -12,7 +12,7 @@ export const ScheduleForm = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
 
-  const { unsheduled } = useCampaigns();
+  const { unscheduled } = useCampaigns();
 
   const handleSchedule = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -28,7 +28,7 @@ export const ScheduleForm = () => {
       return;
     }
     try {
-      const res = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/v1/campaign/schedule`,
         {
           campaignId: selectedId,
@@ -60,7 +60,10 @@ export const ScheduleForm = () => {
       </h1>
       <div className="mt-20">
         <div className="ml-6.5">
-          <SelectWrapper campaigns={unsheduled} setSelectedId={setSelectedId} />
+          <SelectWrapper
+            campaigns={unscheduled}
+            setSelectedId={setSelectedId}
+          />
         </div>
         <div className="mt-4 flex justify-around w-full">
           <div className="space-y-2">
